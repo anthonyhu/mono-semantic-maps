@@ -149,16 +149,15 @@ mc_samples: 40
 vpn:
 
   # Size of output feature maps
-  output_size: [29, 50]
+  output_size: [38, 50]
 
   # Number of channels in fully connected layer
   fc_dim: 256
 
 # Variational encoder-decoder network options
 ved:
-
   # Dimensions of bottleneck (depends on the size of input images)
-  bottleneck_dim: 18
+  bottleneck_dim: 24
 
 # Loss function
 loss_fn: bce

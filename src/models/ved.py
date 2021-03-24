@@ -49,22 +49,20 @@ class VariationalEncoderDecoder(nn.Module):
             int((map_extents[2] - map_extents[0]) / map_resolution),
         )
 
-    
-    def forward(self, image, *args):
+        # ImageNet normalization parameters
+        self.register_buffer('mean', torch.tensor([0.485, 0.456, 0.406]))
+        self.register_buffer('std', torch.tensor([0.229, 0.224, 0.225]))
 
+    def forward(self, image, *args):
+        image = (image - self.mean.view(-1, 1, 1)) / self.std.view(-1, 1, 1)
         # Downsample input image so that it more closely matches
         # the input dimensions used in the original paper
-        image = image[:, :, ::2, ::2]
+        image = torch.nn.functional.interpolate(image, scale_factor=0.5, mode='bilinear')
 
         # Run model forwards
         logits, mu, logvar = self.model(image, self.output_size, self.training)
 
         return logits, mu, logvar
-    
-
-
-
-
 
 
 def get_upsampling_weight(in_channels, out_channels, kernel_size):

@@ -89,11 +89,18 @@ class VPNModel(nn.Module):
                                                 num_view=self.num_views)
         self.decoder = PPMBilinear(num_class, fc_dim, False)
 
+        # ImageNet normalization parameters
+        self.register_buffer('mean', torch.tensor([0.485, 0.456, 0.406]))
+        self.register_buffer('std', torch.tensor([0.229, 0.224, 0.225]))
+
     def forward(self, x, *args):
         B, N, C, H, W = x.view([-1, self.num_views, int(x.size()[1] / self.num_views)] \
                             + list(x.size()[2:])).size()
 
         x = x.view(B*N, C, H, W)
+        # Normalise inputs
+        x = (x - self.mean.view(-1, 1, 1)) / self.std.view(-1, 1, 1)
+
         x = self.encoder(x)[0]
         x = x.view([B, N] + list(x.size()[1:]))
         x = self.transform_module(x)
