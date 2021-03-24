@@ -31,9 +31,3 @@ prior:
   - 0.00012   # bicycle
   - 0.00031   # traffic_cone
   - 0.00176   # barrier
-
-ved:
-  bottleneck_dim: 18
-
-vpn:
-  output_size : [29, 50]
