@@ -54,7 +54,7 @@ class VariationalEncoderDecoder(nn.Module):
 
         # Downsample input image so that it more closely matches
         # the input dimensions used in the original paper
-        #image = image[:, :, ::2, ::2]
+        image = image[:, :, ::2, ::2]
 
         # Run model forwards
         logits, mu, logvar = self.model(image, self.output_size, self.training)

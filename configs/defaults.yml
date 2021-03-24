@@ -6,7 +6,7 @@
 gpus: [0, 1]
 
 # Number of examples per mini-batch
-batch_size: 48
+batch_size: 28
 
 # Number of dataloader threads
 num_workers: 8
@@ -51,7 +51,7 @@ nuscenes_version: v1.0-trainval
 label_root: /mnt/local/datasets/nuscenes/trainval/roddick-map-labels-v1.2
 
 # Input image size after downsampling
-img_size: [352, 128]
+img_size: [800, 600]
 
 # Hold out portion of train data to calibrate on
 hold_out_calibration: False
