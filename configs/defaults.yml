@@ -3,19 +3,19 @@
 ### Training options ###
 
 # IDs of GPUs to use during training
-gpus: [0, 1]
+gpus: [0, 1, 2]
 
 # Number of examples per mini-batch
-batch_size: 28
+batch_size: 12
 
 # Number of dataloader threads
-num_workers: 8
+num_workers: 12
 
 # Learning rate
 learning_rate: 0.1
 
 # Decay learning rate by a factor 10 after the following number of epochs
-lr_milestones: [150, 185]
+lr_milestones: [60, 80]
 
 # Weight decay
 weight_decay: 0.0001
@@ -24,7 +24,7 @@ weight_decay: 0.0001
 logdir: logs
 
 # Number of epochs to train for
-num_epochs: 200
+num_epochs: 100
 
 # Number of examples per epoch
 epoch_size: 50000
@@ -42,13 +42,13 @@ train_split: train
 val_split: val
 
 # Root data directory 
-dataroot: /mnt/local/datasets/nuscenes/trainval
+dataroot: /home/mifs/ah2029/datasets/nuscenes/trainval
 
 # NuScenes dataset version
 nuscenes_version: v1.0-trainval
 
 # Directory containing pregenerated training labels
-label_root: /mnt/local/datasets/nuscenes/trainval/roddick-map-labels-v1.2
+label_root: /home/mifs/ah2029/datasets/nuscenes/trainval/roddick-map-labels-v1.2
 
 # Input image size after downsampling
 img_size: [800, 600]
