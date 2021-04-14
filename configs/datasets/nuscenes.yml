@@ -1,3 +1,22 @@
+# Root data directory
+dataroot: /home/anthony/datasets/nuscenes/mini
+
+# NuScenes dataset version
+nuscenes_version: v1.0-mini
+
+# Directory containing pregenerated training labels
+label_root: /home/anthony/datasets/nuscenes/mini/roddick-map-labels-v1.2
+
+logdir: debug
+gpus: [0]
+
+# Number of examples per mini-batch
+batch_size: 1
+
+# Number of dataloader threads
+num_workers: 0
+
+
 num_class: 14
 class_weights:
   -    1.7    # drivable_area

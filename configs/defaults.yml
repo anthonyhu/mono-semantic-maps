@@ -94,6 +94,7 @@ prior:
 hflip: True
 
 # Top-left and bottom right coordinates of map region, in meters
+# maybe should be [-50., 0, 50., 50.]
 map_extents: [-50., 2, 50., 50.]
 
 # Spacing between adjacent grid cells in the map, in meters
